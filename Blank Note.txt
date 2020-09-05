@@ -1,1 +1,16 @@
-123
+Link & code
+
+COde:
+_layouts/default.html:
+
+<h1>{{ page.title }}</h1>
+{% include linebreaks.html input=content %}
+
+
+
+
+Link:
+https://github.community/t/my-favorite-jekyll-themes-how-bout-you/10644
+
+
+https://stackoverflow.com/questions/52762454/jekyll-markdown-with-line-feed-is-not-rendered-in-html
