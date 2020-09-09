@@ -1,6 +1,7 @@
 Link & code
-
+-----
 COde:
+for line breaks
 _layouts/default.html:
 
 <h1>{{ page.title }}</h1>
@@ -19,9 +20,48 @@ _includes/linebreaks.html:
 
 
 
+for navigation
+_layout/post.html
+
+after ((content)) add:
+<div class="post-nav">
+  <p>
+    {% if page.previous.url %}
+    <a href="{{page.previous.url}}">&#8672;&nbsp;{{page.previous.title}}</a>
+    {% endif %}
+  </p>
+  <p>
+    {% if page.next.url %}
+    <a href="{{page.next.url}}">{{page.next.title}}&nbsp;&#8674;</a>
+    {% endif %}
+  </p>
+</div>
+
+
+
+for categories
+on _include create categories.html and add:
+
+on _layout/post add:
+<div class="post-categories">
+  {% if post %}
+    {% assign categories = post.categories %}
+  {% else %}
+    {% assign categories = page.categories %}
+  {% endif %}
+  {% for category in categories %}
+  <a href="{{site.baseurl}}/categories/#{{category|slugize}}">{{category}}</a>
+  {% unless forloop.last %}&nbsp;{% endunless %}
+  {% endfor %}
+</div>
+----
 
 Link:
+theme
 https://github.community/t/my-favorite-jekyll-themes-how-bout-you/10644
 
-
+line breaks
 https://stackoverflow.com/questions/52762454/jekyll-markdown-with-line-feed-is-not-rendered-in-html
+
+nav next prev
+https://www.bytedude.com/jekyll-previous-and-next-posts/
